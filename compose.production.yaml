@@ -1,0 +1,50 @@
+services:
+  redis:
+    image: redis/redis-stack-server:7.4.0-v3
+    container_name: redis
+    volumes:
+      - redis-data:/data
+    env_file:
+      - .env
+    restart: unless-stopped
+  fetch:
+    build:
+      context: .
+      dockerfile: ./services/fetch/Dockerfile
+    container_name: fetch
+    env_file:
+      - .env
+    depends_on:
+      - redis
+    restart: unless-stopped
+    # Overwrite CMD
+    command: tail -f /dev/null
+  nextjs:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    container_name: nextjs
+    env_file:
+      - .env
+    ports:
+      - "3001:3000"
+    depends_on:
+      - redis
+    restart: unless-stopped
+  # https://community.hetzner.com/tutorials/installing-nginx-proxy-manager
+  nginx:
+    image: jc21/nginx-proxy-manager:2.12.3
+    container_name: nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "81:81"
+      - "443:443"
+    volumes:
+      - nginx-data:/data
+      - nginx-letsencrypt:/etc/letsencrypt
+    network_mode: "host"
+volumes:
+  redis-data:
+  nginx-data:
+  nginx-letsencrypt:

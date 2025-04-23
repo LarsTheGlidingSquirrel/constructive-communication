@@ -1,0 +1,10 @@
+# syntax=docker.io/docker/dockerfile:1
+FROM node:18.20.8
+
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+
+EXPOSE 3002
+CMD npm run start-next-dev

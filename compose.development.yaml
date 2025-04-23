@@ -1,0 +1,39 @@
+services:
+  redis:
+    image: redis/redis-stack-server:7.4.0-v3
+    container_name: redis
+    volumes:
+      - redis-data:/data
+    env_file:
+      - .env
+  fetch:
+    build:
+      context: .
+      dockerfile: ./services/fetch/Dockerfile
+    container_name: fetch
+    env_file:
+      - .env
+    depends_on:
+      - redis
+    # Overwrite CMD
+    # command: tail -f /dev/null
+
+  nextjs:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: nextjs
+    env_file:
+      - .env
+    ports:
+      - 3002:3002
+    depends_on:
+      - redis
+    develop:
+      watch:
+        - action: sync
+          path: ./src
+          target: /app/src
+
+volumes:
+  redis-data:
