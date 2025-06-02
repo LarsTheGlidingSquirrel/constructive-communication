@@ -71,8 +71,26 @@ export default function Analysis() {
             <Icon className="" icon="raphael:arrowright" />
           </Button>
         </div>
+        <div className="text-accent-dark flex flex-row gap-3 text-2xl">
+          <a
+            href={entities[index].protocolUrl}
+            target="_blank"
+            title="Protokoll"
+          >
+            <Icon className="hover:brightness-110" icon="proicons:document" />
+          </a>
+          {/* <a
+            href={
+              t.type({ videoUrl: t.string }).is(entities[index])
+                ? entities[index].videoUrl
+                : ""
+            }
+            target="_blank"
+          >
+            <Icon className="hover:brightness-110" icon="proicons:video-clip" />
+          </a> */}
+        </div>
       </div>
-
       <div
         className="flex w-full flex-row gap-[100%] transition-transform duration-700 ease-out"
         style={{ transform: `translateX(${-index * 2}00%)` }}
@@ -81,9 +99,6 @@ export default function Analysis() {
           <Cards key={i} cards={entity.cards} isVisible={index === i} />
         ))}
       </div>
-      <Button href={entities[index].protocolUrl}>
-        <span>Protokoll</span>
-      </Button>
     </div>
   );
 }
