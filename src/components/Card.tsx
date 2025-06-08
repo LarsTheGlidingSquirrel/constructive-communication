@@ -2,12 +2,24 @@
 
 import { Icon } from "@iconify/react";
 
+const icon = {
+  positive: "material-symbols:thumb-up",
+  negative: "material-symbols:thumb-down",
+  info: "material-symbols:info-outline-rounded",
+};
+
+const iconColor = {
+  positive: "text-thumb-green",
+  negative: "text-thumb-red",
+  info: "",
+};
+
 export default function Card({
-  positiveOrNegative,
+  topIcon,
   title,
   explanation,
 }: {
-  positiveOrNegative: "positive" | "negative";
+  topIcon: "positive" | "negative" | "info";
   title: string;
   explanation: string;
 }) {
@@ -20,12 +32,9 @@ export default function Card({
       <div className="relative top-7 z-100 flex flex-col items-center">
         <div className="bg-primary-dark rounded-full border-1 border-white/25 p-3">
           <Icon
-            className={`text-accent-light text-3xl ${positiveOrNegative === "positive" ? "text-thumb-green" : "text-thumb-red"}`}
-            icon={
-              positiveOrNegative === "positive"
-                ? "material-symbols:thumb-up"
-                : "material-symbols:thumb-down"
-            }
+            className={`text-accent-light aspect-square text-3xl ${iconColor[topIcon]}`}
+            icon={icon[topIcon]}
+            fallback={<span className="invisible">##</span>}
           />
         </div>
       </div>

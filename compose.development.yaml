@@ -16,7 +16,7 @@ services:
     depends_on:
       - redis
     # Overwrite CMD
-    # command: tail -f /dev/null
+    command: tail -f /dev/null
 
   nextjs:
     build:

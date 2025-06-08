@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -12,8 +12,12 @@
   --color-thumb-green: hsl(120 50% 60%);
   --color-thumb-red: hsl(0 50% 60%);
 
-  --font-display: "Roboto", "sans-serif"; 
+  --font-display: "Nunito", "sans-serif"; 
 
   --shadow-bottom-glow: 0 4px 20px 0 hsla(0, 100%, 100%, 15%);
   --shadow-glow-white: 0 0 20px 0 hsla(0, 100%, 100%, 15%);
 }
+
+/* * {
+  text-box: trim-both ex alphabetic;
+} */

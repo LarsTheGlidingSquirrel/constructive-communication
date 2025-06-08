@@ -15,7 +15,7 @@ export default function Cards({
       {cards.map((card, index) => (
         <Card
           key={index}
-          positiveOrNegative={card.positiveOrNegativeFeedback}
+          topIcon={card.positiveOrNegativeFeedback}
           title={card.heading}
           explanation={card.explanation}
         />
