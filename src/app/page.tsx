@@ -86,15 +86,15 @@ export default function Home() {
         </p>
       </div>
 
-      <div className="invisible col-span-full row-start-4 row-end-10 flex w-[min(100%,120rem)] flex-row justify-self-center overflow-clip opacity-20 lg:visible">
-        <div className="mt-12 w-1/2 shrink-0 grow-0 pr-[24rem]">
+      <div className="invisible col-span-full row-start-4 row-end-10 flex w-[min(100%,90rem)] flex-row justify-self-center overflow-clip opacity-20 lg:visible">
+        <div className="mt-12 w-1/2 shrink-0 grow-0 pr-[28rem]">
           <Image
             src={talkingLeftSvg}
             alt="Bundestag"
             style={{ width: "100%" }}
           />
         </div>
-        <div className="mt-12 w-1/2 shrink-0 grow-0 pl-[24rem]">
+        <div className="mt-12 w-1/2 shrink-0 grow-0 pl-[28rem]">
           <Image
             src={talkingRightSvg}
             alt="Bundestag"
